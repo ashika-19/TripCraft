@@ -1,0 +1,225 @@
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  max-width: 560px;
+  height: 52px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.search-field:focus-within {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(15, 157, 154, 0.15);
+}
+.search-field svg {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.search-field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+}
+.search-clear {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cream-2);
+  color: var(--navy);
+  transition: background 0.2s;
+}
+.search-clear:hover {
+  background: var(--line);
+}
+.chip-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.results-meta {
+  margin: 8px 0 22px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Grid */
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+}
+
+/* Destination card */
+.dest-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(231, 224, 209, 0.7);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+  animation: fadeUp 0.5s var(--ease) both;
+}
+.dest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.dest-media {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy-2), var(--teal));
+}
+.dest-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+.dest-card:hover .dest-media img {
+  transform: scale(1.09);
+}
+.dest-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 31, 58, 0) 42%,
+    rgba(11, 31, 58, 0.72) 100%
+  );
+  pointer-events: none;
+}
+.dest-badge,
+.dest-rating {
+  position: absolute;
+  top: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+.dest-badge {
+  left: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy);
+}
+.dest-rating {
+  right: 14px;
+  background: rgba(11, 31, 58, 0.6);
+  color: #fff;
+}
+.dest-rating svg {
+  color: var(--orange);
+}
+.dest-title {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  z-index: 2;
+  color: #fff;
+}
+.dest-title h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+.dest-title p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.86rem;
+  opacity: 0.92;
+}
+
+.dest-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+  padding: 18px 20px 20px;
+}
+.dest-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dest-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+.dest-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--cream-2);
+}
+.dest-from {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.dest-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+/* Skeleton card */
+.skeleton-card {
+  animation: none;
+}
+.skeleton-card:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+.skeleton-card .dest-media::after {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .dest-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .search-field {
+    max-width: none;
+  }
+}
